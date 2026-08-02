@@ -22,7 +22,7 @@ export function AboutPage() {
           <div className="absolute inset-0 bg-gradient-to-tr from-accent/0 to-accent/20 mix-blend-overlay opacity-0 group-hover:opacity-100 transition-opacity duration-500" />
         </div>
 
-        <div className="poem-content max-w-2xl mx-auto space-y-6 text-text-secondary text-lg md:text-xl leading-relaxed italic">
+        <div className="poem-content has-dropcap max-w-2xl mx-auto space-y-6 text-text-secondary text-lg md:text-xl leading-relaxed italic">
           <p>Words have always felt like home.</p>
           
           <p>

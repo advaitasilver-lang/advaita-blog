@@ -43,7 +43,7 @@
     color: var(--color-text-secondary);
     font-family: var(--font-body);
   }
-  .poem-content > p:first-of-type::first-letter {
+  .has-dropcap > p:first-of-type::first-letter {
     float: left;
     font-size: 4.8rem;
     line-height: 0.85;

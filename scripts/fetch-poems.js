@@ -16,7 +16,8 @@ async function fetchPoems() {
       throw new Error(`Failed to fetch poems: ${res.statusText}`);
     }
 
-    const posts = await res.json();
+    let posts = await res.json();
+    posts = posts.filter(post => post.title.rendered !== "Hello world!");
     console.log(`Fetched ${posts.length} poems.`);
 
     const dataPath = path.resolve(__dirname, "../src/data/poems.json");

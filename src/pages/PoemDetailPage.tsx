@@ -1,35 +1,42 @@
-import { fetchPoemBySlug, fetchPoems } from "@/lib/wordpress";
-import { extractReadingTime } from "@/lib/wordpress";
-import { notFound } from "next/navigation";
-import Link from "next/link";
+import { useEffect, useState } from "react";
+import { useParams, Link } from "react-router-dom";
+import { fetchPoemBySlug, extractReadingTime } from "@/utils/wordpress";
 import { ArrowLeft, Clock, Calendar } from "lucide-react";
-import { Metadata } from "next";
 
-type Props = {
-  params: Promise<{ slug: string }>;
-};
+export function PoemDetailPage() {
+  const { slug } = useParams<{ slug: string }>();
+  const [poem, setPoem] = useState<any>(null);
+  const [loading, setLoading] = useState(true);
 
-export async function generateMetadata({ params }: Props): Promise<Metadata> {
-  const { slug } = await params;
-  const poem = await fetchPoemBySlug(slug);
-  return {
-    title: poem ? `${poem.title.rendered} | Advaita Silver` : "Poem Not Found",
-  };
-}
+  useEffect(() => {
+    async function loadPoem() {
+      if (!slug) return;
+      try {
+        const data = await fetchPoemBySlug(slug);
+        setPoem(data);
+      } catch (error) {
+        console.error("Failed to load poem:", error);
+      } finally {
+        setLoading(false);
+      }
+    }
+    loadPoem();
+  }, [slug]);
 
-export async function generateStaticParams() {
-  const poems = await fetchPoems();
-  return poems.map((poem) => ({
-    slug: poem.slug,
-  }));
-}
-
-export default async function PoemPage({ params }: Props) {
-  const { slug } = await params;
-  const poem = await fetchPoemBySlug(slug);
+  if (loading) {
+    return (
+      <main className="min-h-screen pt-32 pb-32 px-6 flex justify-center w-full text-text-secondary font-ui">
+        Loading...
+      </main>
+    );
+  }
 
   if (!poem) {
-    notFound();
+    return (
+      <main className="min-h-screen pt-32 pb-32 px-6 flex justify-center w-full text-text-secondary font-ui">
+        Poem not found.
+      </main>
+    );
   }
 
   const readingTime = extractReadingTime(poem.content.rendered);
@@ -39,7 +46,7 @@ export default async function PoemPage({ params }: Props) {
     <main className="min-h-screen pt-32 pb-32 px-6 flex justify-center w-full">
       <article className="w-full max-w-[720px]">
         <Link 
-          href="/poems" 
+          to="/poems" 
           className="inline-flex items-center gap-2 text-text-secondary hover:text-accent transition-colors font-ui uppercase text-xs tracking-widest mb-16"
         >
           <ArrowLeft size={16} />

@@ -1,9 +1,6 @@
-"use client";
-
-import Link from "next/link";
-import { usePathname } from "next/navigation";
+import { Link, useLocation } from "react-router-dom";
 import { Search } from "lucide-react";
-import { cn } from "@/lib/utils";
+import { cn } from "@/utils/utils";
 
 const NAV_LINKS = [
   { name: "Home", href: "/" },
@@ -14,7 +11,8 @@ const NAV_LINKS = [
 ];
 
 export function Navigation() {
-  const pathname = usePathname();
+  const location = useLocation();
+  const pathname = location.pathname;
 
   return (
     <header className="fixed top-0 left-0 right-0 z-50 flex items-center justify-center p-6">
@@ -24,7 +22,7 @@ export function Navigation() {
           return (
             <Link
               key={link.name}
-              href={link.href}
+              to={link.href}
               className={cn(
                 "font-ui text-sm tracking-widest uppercase transition-colors duration-300",
                 isActive ? "text-accent" : "text-text-secondary hover:text-text-primary"

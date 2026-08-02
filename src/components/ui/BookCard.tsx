@@ -1,11 +1,9 @@
-"use client";
-
 import { motion } from "framer-motion";
-import Link from "next/link";
+import { Link } from "react-router-dom";
 import { format } from "date-fns";
-import type { WPPost } from "@/lib/wordpress";
-import { extractReadingTime } from "@/lib/wordpress";
-import { cn } from "@/lib/utils";
+import type { WPPost } from "@/utils/wordpress";
+import { extractReadingTime } from "@/utils/wordpress";
+import { cn } from "@/utils/utils";
 
 interface BookCardProps {
   post: WPPost;
@@ -18,7 +16,7 @@ export function BookCard({ post, className }: BookCardProps) {
   const formattedDate = new Date(post.date).toLocaleDateString("en-US", { month: 'long', year: 'numeric' });
 
   return (
-    <Link href={`/poems/${post.slug}`}>
+    <Link to={`/poems/${post.slug}`}>
       <motion.div
         className={cn(
           "relative w-full aspect-[2/3] perspective-1000",

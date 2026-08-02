@@ -1,35 +1,14 @@
-import { useEffect, useState } from "react";
 import { useParams, Link } from "react-router-dom";
-import { fetchPoemBySlug, extractReadingTime } from "@/utils/wordpress";
 import { ArrowLeft, Clock, Calendar } from "lucide-react";
+import poemsData from "@/data/poems.json";
+import { WPPost, extractReadingTime } from "@/utils/utils";
 
 export function PoemDetailPage() {
   const { slug } = useParams<{ slug: string }>();
-  const [poem, setPoem] = useState<any>(null);
-  const [loading, setLoading] = useState(true);
+  const poems = poemsData as WPPost[];
+  const poem = poems.find(p => p.slug === slug);
 
-  useEffect(() => {
-    async function loadPoem() {
-      if (!slug) return;
-      try {
-        const data = await fetchPoemBySlug(slug);
-        setPoem(data);
-      } catch (error) {
-        console.error("Failed to load poem:", error);
-      } finally {
-        setLoading(false);
-      }
-    }
-    loadPoem();
-  }, [slug]);
 
-  if (loading) {
-    return (
-      <main className="min-h-screen pt-32 pb-32 px-6 flex justify-center w-full text-text-secondary font-ui">
-        Loading...
-      </main>
-    );
-  }
 
   if (!poem) {
     return (

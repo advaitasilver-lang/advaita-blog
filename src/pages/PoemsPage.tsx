@@ -1,24 +1,9 @@
-import { useEffect, useState } from "react";
-import { fetchPoems } from "@/utils/wordpress";
 import { BookCard } from "@/components/ui/BookCard";
+import poemsData from "@/data/poems.json";
+import { WPPost } from "@/utils/utils";
 
 export function PoemsPage() {
-  const [poems, setPoems] = useState<any[]>([]);
-  const [loading, setLoading] = useState(true);
-
-  useEffect(() => {
-    async function loadPoems() {
-      try {
-        const data = await fetchPoems();
-        setPoems(data);
-      } catch (error) {
-        console.error("Failed to load poems:", error);
-      } finally {
-        setLoading(false);
-      }
-    }
-    loadPoems();
-  }, []);
+  const poems = poemsData as WPPost[];
 
   return (
     <main className="min-h-screen pt-32 pb-24 px-8 md:px-16 max-w-7xl mx-auto w-full">
@@ -31,9 +16,7 @@ export function PoemsPage() {
         </p>
       </div>
       
-      {loading ? (
-        <p className="text-center text-text-secondary font-ui uppercase tracking-widest text-sm">Loading library...</p>
-      ) : poems.length === 0 ? (
+      {poems.length === 0 ? (
         <p className="text-center text-text-secondary font-ui uppercase tracking-widest text-sm">The library is empty at the moment.</p>
       ) : (
         <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-x-12 gap-y-20 perspective-1000">

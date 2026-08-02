@@ -43,3 +43,5 @@ next-env.d.ts
 dist
 dist-ssr
 *.local
+
+src/data/poems.json

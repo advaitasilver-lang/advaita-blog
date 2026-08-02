@@ -23,17 +23,44 @@ export function AboutPage() {
         </div>
 
         <div className="poem-content max-w-2xl mx-auto space-y-6 text-text-secondary text-lg md:text-xl leading-relaxed italic">
+          <p>Words have always felt like home.</p>
+          
           <p>
-            Hey, A place where thoughts drift like stardust through a quiet sky, where the moon listens, and silence gently watches.
+            This space exists because writing does—softly, steadily, without asking for permission. It began as a place to gather thoughts that didn't fit neatly into conversations, moments that lingered longer than expected, and feelings that preferred ink over noise.
           </p>
+
           <p>
-            Each poem holds a secret, soft as a fading star, fragile as ten lives— or maybe just nine.
+            I'm Advaita Silver—an aspiring author, a writer, and a poetess.<br/>
+            Not published (yet), but deeply devoted to the craft.
           </p>
+
           <p>
-            I am Advaita Silver, drawn to the hush of night, to the quiet ache the sky leaves behind.
+            Writing is how time slows here. In free moments, words find their way onto the page—sometimes quietly, sometimes all at once. Poetry, especially, feels like a language of its own: a way to hold loneliness, wonder, longing, and hope without having to explain them away.
           </p>
+
           <p>
-            Step softly. Stay beneath the stars.
+            But this space also holds stories—short ones, often tender or bittersweet—glimpses into imagined lives, fleeting scenes, and characters that arrive like constellations. Short stories feel like another kind of poetry: longer breaths, different worlds, the same heartbeat underneath.
+          </p>
+
+          <p>These pieces are not performances. They are pauses.</p>
+
+          <p>
+            They explore silence, growing up, becoming, and the strange beauty of being human. Some are soft. Some are heavy. All are written with intention.
+          </p>
+
+          <p>
+            This space isn't about perfection or finished answers. It's about the process—learning, feeling, writing, and slowly shaping a voice. Publishing may come later. For now, the work itself matters.
+          </p>
+
+          <p>
+            If something here makes you stop for a moment—<br/>
+            If a line stays with you longer than expected—<br/>
+            Then this space has done what it was meant to do.
+          </p>
+
+          <p>
+            Welcome.<br/>
+            Take your time.
           </p>
         </div>
       </motion.div>

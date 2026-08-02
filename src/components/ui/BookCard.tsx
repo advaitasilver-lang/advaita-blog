@@ -1,9 +1,7 @@
 import { motion } from "framer-motion";
 import { Link } from "react-router-dom";
 import { format } from "date-fns";
-import type { WPPost } from "@/utils/wordpress";
-import { extractReadingTime } from "@/utils/wordpress";
-import { cn } from "@/utils/utils";
+import { cn, type WPPost, extractReadingTime } from "@/utils/utils";
 
 interface BookCardProps {
   post: WPPost;

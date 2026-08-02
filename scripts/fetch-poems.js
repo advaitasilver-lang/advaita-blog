@@ -5,7 +5,7 @@ import { fileURLToPath } from "url";
 const __filename = fileURLToPath(import.meta.url);
 const __dirname = path.dirname(__filename);
 
-const API_URL = "https://public-api.wordpress.com/wp/v2/sites/advaitasilver.wordpress.com";
+const API_URL = "https://dev-advaitasilver.pantheonsite.io/wp-json/wp/v2";
 
 async function fetchPoems() {
   try {
